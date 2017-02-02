@@ -2,7 +2,6 @@
 language: php
 
 php:
-  - 5.3
   - 5.4
   - 5.5
   - 5.6
@@ -13,4 +12,4 @@ before_script:
   - composer update --dev 
 
 script:
-  - cd test && curl --silent https://raw.githubusercontent.com/atk14/Atk14/master/src/scripts/run_unit_tests | php
+  - cd test && wget https://raw.githubusercontent.com/atk14/Atk14/master/src/scripts/run_unit_tests -O run_unit_tests && chmod +x run_unit_tests && ./run_unit_tests
