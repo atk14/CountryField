@@ -1,0 +1,23 @@
+{
+        "name": "atk14/country-field",
+        "type": "library",
+        "description": "Country select field localized for every single language. It is intended to be used in ATK14 Forms.",
+        "keywords": ["country", "localized", "atk14", "forms", "field"],
+        "homepage": "https://github.com/atk14/CountryField",
+        "license": ["MIT"],
+        "authors": [
+                {
+                        "name": "Jaromir Tomek",
+                        "homepage": "https://github.com/yarri"
+                }
+        ],
+        "require": {
+                "php": ">=5.3.0",
+                "umpirsky/country-list": "^2.0"
+        },
+        "require-dev": {
+        },
+        "autoload": {
+                "classmap": ["src/app/fields","src/lib"]
+        }
+}
