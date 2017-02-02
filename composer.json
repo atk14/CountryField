@@ -16,6 +16,7 @@
                 "umpirsky/country-list": "^2.0"
         },
         "require-dev": {
+                "phpunit/phpunit": "4.8.*"
         },
         "autoload": {
                 "classmap": ["src/app/fields","src/lib"]
