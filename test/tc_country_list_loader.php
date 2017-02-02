@@ -10,6 +10,6 @@ class TcCountryListLoader extends TcBase {
 		putenv("LANG=en_US.UTF-8");
 		$list = CountryListLoader::Get();
 		$this->assertEquals("Czech Republic",$list["CZ"]);
-		$this->assertEquals("United Kingdom",$list["GB"]);
+		$this->assertEquals("United States",$list["US"]);
 	}
 }
