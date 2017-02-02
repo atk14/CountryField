@@ -6,8 +6,8 @@ class CountryListLoader {
 		$LANG = preg_replace('/\..+/','',$LANG); // "cs_CZ.UTF-8" -> "cs_CZ"
 
 		$vendor_dirs = [
-			__DIR__ . "/../../../vendor", // in development & production
-			__DIR__ . "/../../vendor" // while testing this package
+			__DIR__ . "/../../vendor", // while testing this package
+			__DIR__ . "/../../../../../vendor", // in development & production
 		];
 
 		foreach($vendor_dirs as $vendor){
