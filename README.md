@@ -7,19 +7,8 @@ It uses https://github.com/umpirsky/country-list as the localized countries list
 
 It also contains Smarty modifier which displays the country name according to its code ISO.
 
-Installation
-------------
-
-Just use the Composer:
-
-    cd path/to/your/atk14/project/
-    composer require atk14/country-field dev-master
-
-    ln -s ../../vendor/atk14/country-field/src/app/fields/country_field.php app/fields/country_field.php
-    ln -s ../../vendor/atk14/country-field/src/app/helpers/modifier.to_country_name.php app/helpers/modifier.to_country_name.php
-
-Usage
------
+Basic usage
+-----------
 
 In a form:
 
@@ -28,17 +17,17 @@ In a form:
     class CreateNewForm extends ApplicationForm {
 
       function set_up(){
-        $this->add_field("name",new CharField(array(
-          "label" => _("Your name"),
+        $this->add_field("name", new CharField([
+          "label" => "Your name",
           "hint" => "John Doe"
-        )));
+        ]));
 
         // other fields...
 
-        $this->add_field("country_code",new CountryField(array(
-          "label" => _("Choose your country"),
+        $this->add_field("country_code", new CountryField([
+          "label" => "Choose your country",
           "initial" => "CZ"
-        )));
+        ]));
       }
     }
 
@@ -54,6 +43,27 @@ In a template:
 
      {t}Country:{/t} {$user->getCountryCode()|to_country_name}
 
+Special cases
+-------------
+
+It's possible to define a limited set of countries.
+
+    $this->add_field("country_code", new CountryField([
+      "label" => "Choose your favourite V4 country",
+      "allowed_countries" => ["CZ","SK","PL","HU"]
+    ]));
+
+
+Installation
+------------
+
+Just use the Composer:
+
+    cd path/to/your/atk14/project/
+    composer require atk14/country-field dev-master
+
+    ln -s ../../vendor/atk14/country-field/src/app/fields/country_field.php app/fields/country_field.php
+    ln -s ../../vendor/atk14/country-field/src/app/helpers/modifier.to_country_name.php app/helpers/modifier.to_country_name.php
 
 License
 -------
