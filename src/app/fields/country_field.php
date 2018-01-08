@@ -4,6 +4,7 @@ class CountryField extends ChoiceField {
 	function __construct($options = array()){
 		$options += array(
 			"allowed_countries" => null, // array("CZ","SK","PL","HU") "CZ,SK,PL,HU"
+			"empty_choice_field" => "",
 		);
 
 		$allowed_countries = $options["allowed_countries"];
@@ -11,7 +12,7 @@ class CountryField extends ChoiceField {
 			$allowed_countries = explode(",",$allowed_countries);
 		}
 
-		$choices = array("" => "");
+		$choices = array("" => $options["empty_choice_field"]);
 		foreach(CountryListLoader::Get() as $code => $name){
 			if($allowed_countries && !in_array($code,$allowed_countries)){
 				continue;
