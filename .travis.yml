@@ -1,4 +1,6 @@
 # vim:ts=2:sw=2:et
+dist: trusty
+
 language: php
 
 php:
@@ -7,9 +9,12 @@ php:
   - 5.6
   - 7.0
   - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
 
 before_script:
   - composer update --dev 
 
 script:
-  - cd test && wget https://raw.githubusercontent.com/atk14/Atk14/master/src/scripts/run_unit_tests -O run_unit_tests && chmod +x run_unit_tests && ./run_unit_tests
+  - cd test && ../vendor/bin/run_unit_tests
