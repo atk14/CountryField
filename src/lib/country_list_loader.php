@@ -4,6 +4,7 @@ class CountryListLoader {
 	static function Get(){
 		$LANG = getenv("LANG"); // "cs_CZ.UTF-8"
 		$LANG = preg_replace('/\..+/','',$LANG); // "cs_CZ.UTF-8" -> "cs_CZ"
+		$lng = preg_replace('/_.*$/','',$LANG); // "cs_CZ" -> "cs"
 
 		$vendor_dirs = [
 			__DIR__ . "/../../vendor", // while testing this package
@@ -25,6 +26,22 @@ class CountryListLoader {
 		}
 		
 		$countries = require($data_file);
+
+		$replaces = array(
+			"cs" => array(
+				"CZ" => "Česká republika",
+			),
+			"sk" => array(
+				"CZ" => "Česká republika",
+			),
+			"en" => array(
+				"CZ" => "Czech Republic" 
+			),
+		);
+
+		if(isset($replaces[$lng])){
+			$countries = $replaces[$lng] + $countries;
+		}
 
 		return $countries;
 	}
