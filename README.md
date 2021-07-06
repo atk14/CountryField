@@ -60,7 +60,7 @@ Installation
 Just use the Composer:
 
     cd path/to/your/atk14/project/
-    composer require atk14/country-field dev-master
+    composer require atk14/country-field
 
     ln -s ../../vendor/atk14/country-field/src/app/fields/country_field.php app/fields/country_field.php
     ln -s ../../vendor/atk14/country-field/src/app/helpers/modifier.to_country_name.php app/helpers/modifier.to_country_name.php
