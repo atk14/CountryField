@@ -30,9 +30,11 @@ class CountryListLoader {
 		$replaces = array(
 			"cs" => array(
 				"CZ" => "Česká republika",
+				"GB" => "Velká Británie",
 			),
 			"sk" => array(
 				"CZ" => "Česká republika",
+				"GB" => "Veľká Británia",
 			),
 			"en" => array(
 				"CZ" => "Czech Republic" 
