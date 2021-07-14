@@ -42,7 +42,9 @@ class CountryListLoader {
 		);
 
 		if(isset($replaces[$lng])){
-			$countries = $replaces[$lng] + $countries;
+			foreach($replaces[$lng] as $code => $country_name){
+				$countries[$code] = $country_name;
+			}
 		}
 
 		return $countries;
