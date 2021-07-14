@@ -22,4 +22,17 @@ class TcCountryField extends TcBase {
 		$err_message = $this->assertInvalid("PL");
 		$this->assertEquals("Select a valid choice. That choice is not one of the available choices.",$err_message);
 	}
+
+	function test_allowed_countries(){
+		$field = new CountryField(array("allowed_countries" => array("SK","PL","CZ","HU")));
+		$this->assertEquals(array("","CZ","HU","PL","SK"),array_keys($field->get_choices()));
+	}
+
+	function test_include_empty_choice(){
+		$field = new CountryField(array(
+			"include_empty_choice" => false,
+			"allowed_countries" => array("SK","PL","CZ","HU")
+		));
+		$this->assertEquals(array("CZ","HU","PL","SK"),array_keys($field->get_choices()));
+	}
 }

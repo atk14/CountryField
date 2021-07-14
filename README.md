@@ -55,6 +55,17 @@ It's possible to define a limited set of countries.
       "allowed_countries" => ["CZ","SK","PL","HU"]
     ]));
 
+A title of the empty choice can be set with option empty_choice_text:
+
+		$this->add_field("country_code", new CountryField([
+			"empty_choice_text" => "-- select country --"
+		]));
+
+The empty choice can be omitted with option include_empty_choice:
+
+		$this->add_field("country_code", new CountryField([
+			"include_empty_choice" => false
+		]));
 
 Installation
 ------------
