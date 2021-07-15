@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2021-07-15
+
+- Added option disallowed_countries
+
 ## [1.0.3] - 2021-07-14
 
 - Added option include_empty_choice
