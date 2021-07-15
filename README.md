@@ -55,6 +55,13 @@ It's possible to define a limited set of countries.
       "allowed_countries" => ["CZ","SK","PL","HU"]
     ]));
 
+It's also possible to define list of countries which are not allowed.
+
+    $this->add_field("country_code", new CountryField([
+      "label" => "Choose country",
+      "disallowed_countries" => ["BZ","IO","CF"]
+    ]));
+
 A title of the empty choice can be set with option empty_choice_text:
 
 		$this->add_field("country_code", new CountryField([

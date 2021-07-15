@@ -21,6 +21,13 @@ class TcCountryField extends TcBase {
 
 		$err_message = $this->assertInvalid("PL");
 		$this->assertEquals("Select a valid choice. That choice is not one of the available choices.",$err_message);
+
+		// disallowed_countries
+
+		$field = new CountryField(array("allowed_countries" => array("CZ","SK","PL","HU"), "disallowed_countries" => array("HU","DE")));
+
+		$choices = $field->get_choices();
+		$this->assertEquals(array("","CZ","PL","SK"),array_keys($choices));
 	}
 
 	function test_allowed_countries(){
