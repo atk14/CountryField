@@ -45,6 +45,9 @@ class CountryListLoader {
 			foreach($replaces[$lng] as $code => $country_name){
 				$countries[$code] = $country_name;
 			}
+			if(defined("SORT_LOCALE_STRING")){
+				asort($countries,constant("SORT_LOCALE_STRING"));
+			}
 		}
 
 		return $countries;
