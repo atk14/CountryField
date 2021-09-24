@@ -1,7 +1,7 @@
 CountryField
 ============
 
-[![Build Status](https://travis-ci.com/atk14/CountryField.svg?branch=master)](https://travis-ci.com/atk14/CountryField)
+[![Build Status](https://app.travis-ci.com/atk14/CountryField.svg?branch=master)](https://app.travis-ci.com/atk14/CountryField)
 
 Country select field localized for every single language. It is intended to be used in ATK14 Forms.
 
