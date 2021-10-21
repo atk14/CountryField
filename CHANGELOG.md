@@ -1,18 +1,22 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.0.6] - 2021-10-21
+
+* ebb5877 - "United States" replaced with "United States of America"
+
 ## [1.0.5] - 2021-09-24
 
-- Country list is sorted after applying replaces
+* Country list is sorted after applying replaces
 
 ## [1.0.4] - 2021-07-15
 
-- Added option disallowed_countries
+* Added option disallowed_countries
 
 ## [1.0.3] - 2021-07-14
 
-- Added option include_empty_choice
-- Replaces are better inserted in the list of countries
+* Added option include_empty_choice
+* Replaces are better inserted in the list of countries
 
 ## [1.0.2] - 2021-07-12
 
