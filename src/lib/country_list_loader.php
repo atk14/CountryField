@@ -31,13 +31,16 @@ class CountryListLoader {
 			"cs" => array(
 				"CZ" => "Česká republika",
 				"GB" => "Velká Británie",
+				"US" => "Spojené státy americké",
 			),
 			"sk" => array(
 				"CZ" => "Česká republika",
 				"GB" => "Veľká Británia",
+				"US" => "Spojené štáty americké",
 			),
 			"en" => array(
-				"CZ" => "Czech Republic" 
+				"CZ" => "Czech Republic" ,
+				"US" => "United States of America",
 			),
 		);
 
