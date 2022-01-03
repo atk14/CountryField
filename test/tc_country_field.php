@@ -42,4 +42,21 @@ class TcCountryField extends TcBase {
 		));
 		$this->assertEquals(array("CZ","HU","PL","SK"),array_keys($field->get_choices()));
 	}
+
+	function test_extra_countries(){
+		$field = new CountryField(array(
+			"include_empty_choice" => false,
+			"allowed_countries" => array("SK","PL","CZ","HU","NV")
+		));
+		$this->assertEquals(array("CZ","HU","PL","SK"),array_keys($field->get_choices()));
+
+		$field = new CountryField(array(
+			"include_empty_choice" => false,
+			"allowed_countries" => array("SK","PL","CZ","HU","NV"),
+			"add_extra_countries" => array("NV" => "Neverland"),
+		));
+		$choices = $field->get_choices();
+		$this->assertEquals(array("CZ","HU","NV","PL","SK",),array_keys($choices));
+		$this->assertEquals("Neverland",$choices["NV"]);
+	}
 }
