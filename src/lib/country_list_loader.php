@@ -1,7 +1,11 @@
 <?php
 class CountryListLoader {
 
-	static function Get(){
+	static function Get($options = array()){
+		$options += array(
+			"add_extra_countries" => array(), // ["IC" => "Canary Islands", "NV" => "Neverland"]
+		);
+
 		$LANG = getenv("LANG"); // "cs_CZ.UTF-8"
 		$LANG = preg_replace('/\..+/','',$LANG); // "cs_CZ.UTF-8" -> "cs_CZ"
 		$lng = preg_replace('/_.*$/','',$LANG); // "cs_CZ" -> "cs"
@@ -27,6 +31,12 @@ class CountryListLoader {
 		
 		$countries = require($data_file);
 
+		foreach($options["add_extra_countries"] as $code => $country_name){
+			if(!isset($countries[$code])){
+				$countries[$code] = $country_name;
+			}
+		}
+
 		$replaces = array(
 			"cs" => array(
 				"CZ" => "Česká republika",
@@ -48,6 +58,9 @@ class CountryListLoader {
 			foreach($replaces[$lng] as $code => $country_name){
 				$countries[$code] = $country_name;
 			}
+		}
+
+		if(isset($replaces[$lng]) || $options["add_extra_countries"]){
 			if(defined("SORT_LOCALE_STRING")){
 				asort($countries,constant("SORT_LOCALE_STRING"));
 			}

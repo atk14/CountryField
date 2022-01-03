@@ -7,6 +7,8 @@ class CountryField extends ChoiceField {
 			"disallowed_countries" => null, // ["CZ","SK","PL","HU"] or "CZ,SK,PL,HU"
 			"include_empty_choice" => true,
 			"empty_choice_text" => "", // e.g. "-- country --"
+
+			"add_extra_countries" => array(), // ["IC" => "Canary Islands", "NV" => "Neverland"]
 		);
 
 		$allowed_countries = $options["allowed_countries"];
@@ -23,7 +25,7 @@ class CountryField extends ChoiceField {
 		if($options["include_empty_choice"]){
 			$choices[""] = $options["empty_choice_text"];
 		}
-		foreach(CountryListLoader::Get() as $code => $name){
+		foreach(CountryListLoader::Get(array("add_extra_countries" => $options["add_extra_countries"])) as $code => $name){
 			if($allowed_countries && !in_array($code,$allowed_countries)){
 				continue;
 			}
