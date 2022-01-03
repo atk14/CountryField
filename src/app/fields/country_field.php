@@ -3,8 +3,8 @@ class CountryField extends ChoiceField {
 
 	function __construct($options = array()){
 		$options += array(
-			"allowed_countries" => null, // array("CZ","SK","PL","HU") "CZ,SK,PL,HU"
-			"disallowed_countries" => null, // array("CZ","SK","PL","HU") "CZ,SK,PL,HU"
+			"allowed_countries" => null, // ["CZ","SK","PL","HU"] or "CZ,SK,PL,HU"
+			"disallowed_countries" => null, // ["CZ","SK","PL","HU"] or "CZ,SK,PL,HU"
 			"include_empty_choice" => true,
 			"empty_choice_text" => "", // e.g. "-- country --"
 		);
