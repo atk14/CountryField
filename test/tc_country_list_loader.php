@@ -18,14 +18,14 @@ class TcCountryListLoader extends TcBase {
 		$orig_size = sizeof($list);
 		$this->assertTrue($orig_size>100);
 		$this->assertTrue(!isset($list["NV"]));
-		$this->assertTrue(!isset($list["IC"]));
+		$this->assertTrue(!isset($list["XL"]));
 
 		$list = CountryListLoader::Get(array("add_extra_countries" => array(
 			"NV" => "Neverland",
-			"IC" => "Canary Islands"
+			"XL" => "Legendary Islands"
 		)));
 		$this->assertEquals($orig_size+2,sizeof($list));
 		$this->assertEquals("Neverland",$list["NV"]);
-		$this->assertEquals("Canary Islands",$list["IC"]);
+		$this->assertEquals("Legendary Islands",$list["XL"]);
 	}
 }
