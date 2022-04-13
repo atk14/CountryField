@@ -41,6 +41,7 @@ class CountryListLoader {
 			"cs" => array(
 				"CZ" => "Česká republika",
 				"GB" => "Velká Británie",
+				"MK" => "Makedonie",
 				"US" => "Spojené státy americké",
 			),
 			"sk" => array(
