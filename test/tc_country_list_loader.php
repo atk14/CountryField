@@ -30,5 +30,13 @@ class TcCountryListLoader extends TcBase {
 		$this->assertEquals("Neverland",$list["NV"]);
 		$this->assertEquals("Legendary Islands",$list["XL"]);
 		$this->assertEquals("Crimea",$list["UA-43"]);
+
+		// Extra country replaces existing entry
+
+		$list = CountryListLoader::Get();
+		$this->assertEquals("Czech Republic",$list["CZ"]);
+
+		$list = CountryListLoader::Get(array("add_extra_countries" => array("CZ" => "Czechia & Bohemia")));
+		$this->assertEquals("Czechia & Bohemia",$list["CZ"]);
 	}
 }

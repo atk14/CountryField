@@ -31,11 +31,6 @@ class CountryListLoader {
 		
 		$countries = require($data_file);
 
-		foreach($options["add_extra_countries"] as $code => $country_name){
-			// Note that an extra country may replace existing entry.
-			$countries[$code] = $country_name;
-		}
-
 		$replaces = array(
 			"cs" => array(
 				"CZ" => "Česká republika",
@@ -58,6 +53,11 @@ class CountryListLoader {
 			foreach($replaces[$lng] as $code => $country_name){
 				$countries[$code] = $country_name;
 			}
+		}
+
+		foreach($options["add_extra_countries"] as $code => $country_name){
+			// Note that an extra country may replace existing entry.
+			$countries[$code] = $country_name;
 		}
 
 		if(isset($replaces[$lng]) || $options["add_extra_countries"]){
