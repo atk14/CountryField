@@ -32,9 +32,8 @@ class CountryListLoader {
 		$countries = require($data_file);
 
 		foreach($options["add_extra_countries"] as $code => $country_name){
-			if(!isset($countries[$code])){
-				$countries[$code] = $country_name;
-			}
+			// Note that an extra country may replace existing entry.
+			$countries[$code] = $country_name;
 		}
 
 		$replaces = array(
