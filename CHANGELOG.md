@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.0.7] - 2022-04-21
+
+* eebdfc1 - Extra country may replace existing entry
+* dea4b10 - Special name for Macedonia in Czech
+* ba32660 - Addition countries can be added in CountryListLoader::Get() and in the CountryField constructor
+
 ## [1.0.6] - 2021-10-21
 
 * ebb5877 - "United States" replaced with "United States of America"
