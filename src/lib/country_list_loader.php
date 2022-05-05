@@ -47,6 +47,9 @@ class CountryListLoader {
 				"CZ" => "Czech Republic" ,
 				"US" => "United States of America",
 			),
+			"hu" => array(
+				"US" => "Amerikai Egyesült Államok", // it was "Egyesült Államok"
+			),
 		);
 
 		if(isset($replaces[$lng])){
