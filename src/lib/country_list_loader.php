@@ -30,21 +30,25 @@ class CountryListLoader {
 			__DIR__ . "/../../../../../vendor", // in development & production
 		];
 
+		$lng_used = null;
+
 		foreach($vendor_dirs as $vendor){
 			foreach($langs as $l){
 				$data_file = "$vendor/umpirsky/country-list/data/$l/country.php";
 				if(file_exists($data_file)){
+					$lng_used = $l;
 					break(2);
 				}
 			}
 		}
-		
+
 		if(!file_exists($data_file)){
 			throw new Exception("Required file not found: $data_file. Please run composer require umpirsky/country-list");
 		}
 
 		$countries = require($data_file);
 
+		$lng_used_2 = substr($lng_used,0,2); // "cs_CZ" -> "cs"
 		$replaces = array(
 			"cs" => array(
 				"CZ" => "Česká republika",
@@ -66,8 +70,8 @@ class CountryListLoader {
 			),
 		);
 
-		if(isset($replaces[$lng])){
-			foreach($replaces[$lng] as $code => $country_name){
+		if(isset($replaces[$lng_used_2])){
+			foreach($replaces[$lng_used_2] as $code => $country_name){
 				$countries[$code] = $country_name;
 			}
 		}
@@ -77,7 +81,7 @@ class CountryListLoader {
 			$countries[$code] = $country_name;
 		}
 
-		if(isset($replaces[$lng]) || $options["add_extra_countries"]){
+		if(isset($replaces[$lng_used_2]) || $options["add_extra_countries"]){
 			if(defined("SORT_LOCALE_STRING")){
 				asort($countries,constant("SORT_LOCALE_STRING"));
 			}
