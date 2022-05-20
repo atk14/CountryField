@@ -4,7 +4,7 @@ class CountryListLoader {
 	static function Get($options = array()){
 		$options += array(
 			"add_extra_countries" => array(), // ["IC" => "Canary Islands", "NV" => "Neverland"],
-			"lang" => null, // "cs", "en", "sr", "sr_Cyrl", "sr_Latn" (see vendor/umpirsky/country-list/data - )
+			"lang" => null, // "cs", "en", "sr", "sr_Cyrl", "sr_Latn" (see folders vendor/umpirsky/country-list/data - https://github.com/umpirsky/country-list/tree/master/data)
 		);
 
 		$LANG = getenv("LANG"); // "cs_CZ.UTF-8"
