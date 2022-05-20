@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.0.8] - 2022-05-20
+
+* A specific language can be set by new option lang
+
 ## [1.0.7] - 2022-04-21
 
 * eebdfc1 - Extra country may replace existing entry
