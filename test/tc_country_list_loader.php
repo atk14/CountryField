@@ -39,4 +39,32 @@ class TcCountryListLoader extends TcBase {
 		$list = CountryListLoader::Get(array("add_extra_countries" => array("CZ" => "Czechia & Bohemia")));
 		$this->assertEquals("Czechia & Bohemia",$list["CZ"]);
 	}
+
+	function test_lang(){
+		$list = CountryListLoader::Get(array(
+			"lang" => "sr_Cyrl",
+		));
+		$this->assertEquals("Грчка",$list["GR"]);
+
+		$list = CountryListLoader::Get(array(
+			"lang" => "sr_Latn",
+		));
+		$this->assertEquals("Grčka",$list["GR"]);
+
+		$list = CountryListLoader::Get(array(
+			"lang" => "sr_Nonsence",
+		));
+		$this->assertEquals("Грчка",$list["GR"]); // used "sr"
+
+		$list = CountryListLoader::Get(array(
+			"lang" => "xx_Nonsence",
+		));
+		$this->assertEquals("Greece",$list["GR"]); // used "en" (there is not xx_Nonsence nor xx language)
+
+		$list = CountryListLoader::Get(array(
+			"lang" => "../data/hu", // evil attempt, must not pass
+		));
+		$this->assertEquals("Greece",$list["GR"]);
+
+	}
 }

@@ -3,12 +3,27 @@ class CountryListLoader {
 
 	static function Get($options = array()){
 		$options += array(
-			"add_extra_countries" => array(), // ["IC" => "Canary Islands", "NV" => "Neverland"]
+			"add_extra_countries" => array(), // ["IC" => "Canary Islands", "NV" => "Neverland"],
+			"lang" => null, // "cs", "en", "sr", "sr_Cyrl", "sr_Latn" (see vendor/umpirsky/country-list/data - )
 		);
 
 		$LANG = getenv("LANG"); // "cs_CZ.UTF-8"
 		$LANG = preg_replace('/\..+/','',$LANG); // "cs_CZ.UTF-8" -> "cs_CZ"
 		$lng = preg_replace('/_.*$/','',$LANG); // "cs_CZ" -> "cs"
+
+		$langs = array();
+		if($options["lang"]){
+			$langs[] = $options["lang"];
+			$langs[] = preg_replace('/^(..).*/','\1',$options["lang"]);
+		}
+		$langs[] = $LANG; // e.g. "cs_CZ"
+		$langs[] = $lng; // e.g. "cs"
+		$langs[] = "en"; // fallback
+
+		// little sanitization
+		$langs = array_filter($langs,function($l){
+			return (bool)preg_match('/^[a-zA-Z_]{2,30}$/',$l);
+		});
 
 		$vendor_dirs = [
 			__DIR__ . "/../../vendor", // while testing this package
@@ -16,19 +31,18 @@ class CountryListLoader {
 		];
 
 		foreach($vendor_dirs as $vendor){
-			$data_file = "$vendor/umpirsky/country-list/data/$LANG/country.php";
-			if(!file_exists($data_file)){
-				$data_file = "$vendor/umpirsky/country-list/data/en/country.php";
-			}
-			if(file_exists($data_file)){
-				break;
+			foreach($langs as $l){
+				$data_file = "$vendor/umpirsky/country-list/data/$l/country.php";
+				if(file_exists($data_file)){
+					break(2);
+				}
 			}
 		}
 		
 		if(!file_exists($data_file)){
 			throw new Exception("Required file not found: $data_file. Please run composer require umpirsky/country-list");
 		}
-		
+
 		$countries = require($data_file);
 
 		$replaces = array(
