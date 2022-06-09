@@ -68,6 +68,20 @@ class CountryListLoader {
 			"hu" => array(
 				"US" => "Amerikai Egyesült Államok", // it was "Egyesült Államok"
 			),
+			"lv" => array(
+				"GB" => "Lielbritānija",
+				"AS" => "Samoa (ASV)",
+				"VI" => "Virdžīnu salas (ASV)",
+				"VG" => "Virdžīnu salas (Britu)",
+				"XC" => "Kirasao",
+				"KV" => "Kosova",
+				"HK" => "Honkonga (Ķīnas īpašās pārvaldes apgabals)",
+				"MO" => "Makao (ĶTR īpašais administratīvais reģions)",
+				"XS" => "Somālilenda",
+				"XE" => "Sintēstatiusa",
+				"XM" => "Sintmārtena",
+				"SZ" => "Svazilenda",
+			),
 		);
 
 		if(isset($replaces[$lng_used_2])){
